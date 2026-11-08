@@ -494,7 +494,8 @@ function App() {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <GoogleAuthProvider>
-      <BrowserRouter>
+      {/* basename = Vite's base path, so the app works under a subpath such as /takeoff/ (empty at the site root) */}
+      <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
         <Routes>
           <Route path="/projects" element={<ProjectHomeGate />} />
           <Route path="*" element={<App />} />
